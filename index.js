@@ -4,6 +4,7 @@ const newman = require('newman')
 init()
 
 async function init () {
+  console.log(`Run init`);
   try {
     const get = core.getInput
     const apiBase = 'https://api.getpostman.com'
@@ -60,6 +61,8 @@ async function init () {
 }
 
 function runNewman (options) {
+  console.log(`Run Newman`);
+
   newman.run(options).on('done', (err, summary) => {
     if (err || summary.run.failures.length) {
       core.setFailed('Newman run failed!' + (err || ''))
