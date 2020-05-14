@@ -11,7 +11,7 @@ All Newman parameters are supported. [See Newman docs](https://github.com/postma
 This action supports multiple ways of retrieving your Postman collections/environments.
 
 ### Local files
-If you've exported your collection and/or environment to your repo, provide the relative path/names of collection and/or environment files (default: `postman_collection.json` / `postman_environment.json`).
+If you exported your collection and/or environment files to your repo, provide the relative path/names of collection and/or environment files (default: `postman_collection.json` / `postman_environment.json`).
 
 ```
 - uses: actions/checkout@master
@@ -21,8 +21,8 @@ If you've exported your collection and/or environment to your repo, provide the 
     environment: postman_environment.json
 ```          
 
-### Via URL
-If you're collection and/or environment is sitting at a URL accessible to your GitHub action, provide URLs of collection and/or environment files.
+### Import URL
+If your collection and/or environment is sitting at an URL, provide URLs of collection and/or environment files.
 
 ```
 - uses: actions/checkout@master
@@ -32,7 +32,7 @@ If you're collection and/or environment is sitting at a URL accessible to your G
     environment: https://example.com/test/postman/environment.json
 ```
 
-### Via Postman API
+### Postman API
 You can use the Postman API to retrieve the latest version of the collection and/or environment file, to save time and be sure that you’re working off the correct version. 
 
 [See Postman's API](https://docs.api.getpostman.com/?version=latest).
