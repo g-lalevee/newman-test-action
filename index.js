@@ -31,6 +31,8 @@ try {
     sslClientKey: get('sslClientKey'),
     sslClientPassphrase: get('sslClientPassphrase')
   }
+  console.log(options);
+
   // call newman.run to pass `options` object and wait for callback
   newman.run(options, function (err) {
     if (err) { throw err; }
