@@ -64,10 +64,17 @@ function runNewman (options) {
   console.log(`Run Newman`);
   console.log(options);
 
-  newman.run(options).on('done', (err, summary) => {
-
-    if (err || summary.run.failures.length) {
+  newman.run(options)
+  .on('start', function (err, args) { // on start of run, log to console
+    console.log('running a collection...');
+  })
+  .on('done', (err, summary) => {
+    if (err || summary.error) {
+      console.error('collection run encountered an error.');
       core.setFailed('Newman run failed!' + (err || ''))
+    }
+    else {
+      console.log('collection run completed.');
     }
   })
 }
