@@ -6,7 +6,6 @@ Allows you to run Postman collection using Newman CLI.
 
 All Newman parameters are supported. [See Newman docs](https://github.com/postmanlabs/newman#api-reference).
 
-
 ## Getting Started
 
 This action supports multiple ways of retrieving your Postman collections/environments.
