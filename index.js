@@ -33,11 +33,33 @@ try {
   }
   console.log(options);
 
+  if (!options.apiKey) {
+    core.warn('No Postman API key provided.')
+  }
+
+  if (options.collection.match(idRegex)) {
+    options.collection = `${apiBase}/collections/${options.collection}${options.apiKey}`
+  }
+
+  if (options.environment.match(idRegex)) {
+    options.environment = `${apiBase}/environments/${options.environment}${options.apiKey}`
+  }
+
+  if (options.globals) {
+    try {
+      options.globals = JSON.parse(options.globals)
+    } catch (e) {}
+  }
+
   // call newman.run to pass `options` object and wait for callback
   newman.run(options, function (err) {
-    if (err) { throw err; }
-      console.log('collection run complete!');
+    if (err) { 
+      console.log('Collection run encountered an error.');
+      core.setFailed('Newman run failed!' + (err || '')) 
+    }
+    console.log('Collection run complete!');
   });
+  
 } catch (error) {
   core.setFailed(error.message)
 }
