@@ -1,0 +1,28 @@
+{
+  "name": "newman-action",
+  "version": "0.0.6",
+  "description": "Run Postman collections with Newman as a GitHub Action",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matt-ball/newman-action.git"
+  },
+  "keywords": [
+    "actions",
+    "postman",
+    "newman"
+  ],
+  "author": "Matt Ball",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "newman": "^4.6.1"
+  },
+  "devDependencies": {
+    "standard": "^14.3.4"
+  }
+}
