@@ -58,19 +58,26 @@ async function init () {
     console.log(`Run Newman`);
     console.log(options);
   
-    newman.run(options)
-    .on('start', function (err, args) { // on start of run, log to console
-      console.log('running a collection...');
-    })
-    .on('done', (err, summary) => {
-      if (err || summary.error) {
-        console.error('collection run encountered an error.');
-        core.setFailed('Newman run failed!' + (err || ''))
-      }
-      else {
-        console.log('collection run completed.');
-      }
-    })
+    this.run = function () {
+      return new Promise((resolve, reject) => {
+        newman.run({
+          collection: require('../postman_collection.json')
+          //environment: require(this.environment + '.postman_environment.json')
+        }, function () {
+          console.log('in callback')
+        }).on('start', function (err, args) {
+          if (err) { console.log(err) }
+        }).on('beforeDone', function (err, data) {
+          if (err) { console.log(err) }
+        }).on('done', function (err, summary) {
+          if (err) { reject(err) } else { resolve(summary) }
+        })
+      })
+    }
+  
+        
+ 
+        
   //-----------------------------
 
 
