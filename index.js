@@ -1,6 +1,6 @@
 const core = require('@actions/core')
 const newman = require('newman')
-var fs = require('fs');
+const fs = require('fs');
 
 
 try {
@@ -26,8 +26,9 @@ try {
     insecure: JSON.parse(get('insecure')),
     bail: JSON.parse(get('bail')),
     suppressExitCode: JSON.parse(get('suppressExitCode')),
-    reporters: get('reporters').split(','),
-    reporter: { cli : { export : './newman_result.txt'}},
+    reporters: 'html,cli',
+    //reporters: get('reporters').split(','),
+    reporter: { html : { export : './newman_result.html'}},
     //reporter: JSON.parse(get('reporter') || null),
     color: get('color'),
     sslClientCert: get('sslClientCert'),
@@ -60,7 +61,7 @@ try {
       console.log('Collection run encountered an error.');
       core.setFailed('Newman run failed!' + (err || '')) 
     }
-    var content = fs.readFileSync('newman_result.txt','utf8');
+    var content = fs.readFileSync('test/newman_result.txt','utf8');
     console.log("file read:");
     console.log(content);
     console.log('Collection run complete!');
