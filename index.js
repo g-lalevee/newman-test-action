@@ -1,5 +1,7 @@
 const core = require('@actions/core')
 const newman = require('newman')
+var fs = require('fs');
+
 
 try {
   const get = core.getInput
@@ -58,6 +60,9 @@ try {
       console.log('Collection run encountered an error.');
       core.setFailed('Newman run failed!' + (err || '')) 
     }
+    var content = fs.readFileSync('newman_result.txt','utf8');
+    console.log("file read:");
+    console.log(content);
     console.log('Collection run complete!');
   });
   
