@@ -26,8 +26,8 @@ try {
     insecure: JSON.parse(get('insecure')),
     bail: JSON.parse(get('bail')),
     suppressExitCode: JSON.parse(get('suppressExitCode')),
-    reporters: ['html','cli'],
-    reporter : { cli : { export : './htmlReport.txt'}},
+    reporters: ['json','cli'],
+    reporter : { json : { export : './NewmanReport.json'}},
     color: get('color'),
     sslClientCert: get('sslClientCert'),
     sslClientKey: get('sslClientKey'),
@@ -61,7 +61,7 @@ try {
       console.log('Collection run encountered an error.');
       core.setFailed('Newman run failed!' + (err || '')) 
     }
-    var content = fs.readFileSync('htmlReport.txt','utf8');
+    var content = fs.readFileSync('NewmanReport.json','utf8');
     console.log("file read:");
     console.log(content);
     console.log('Collection run complete!');

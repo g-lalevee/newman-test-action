@@ -21,8 +21,7 @@
   "dependencies": {
     "@actions/core": "^1.2.4",
     "fs": "0.0.1-security",
-    "newman": "^5.1.2",
-    "newman-reporter-html": "^1.0.5"
+    "newman": "^5.1.2"
   },
   "devDependencies": {
     "standard": "^14.3.4"
