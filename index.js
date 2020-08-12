@@ -1,7 +1,7 @@
 const core = require('@actions/core')
 const newman = require('newman')
 const fs = require('fs');
-
+const jq = require('node-jq')
 
 try {
   const get = core.getInput
@@ -62,8 +62,7 @@ try {
       core.setFailed('Newman run failed!' + (err || '')) 
     }
     var content = fs.readFileSync('NewmanReport.json','utf8');
-    console.log("file read:");
-    console.log(content);
+    core.setOutput("resultFile", content);
     console.log('Collection run complete!');
   });
   

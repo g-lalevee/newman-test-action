@@ -48,11 +48,6 @@ inputs:
   suppressExitCode:
     description: 'Always exit cleanly'
     default: false
-  reporters:
-    description: 'Reporter to use'
-    default: 'cli'
-  reporter:
-    description: 'Reporter options'
   color:
     description: 'Modify colored CLI output'
     default: 'auto'
@@ -62,6 +57,9 @@ inputs:
     description: 'Path to secret client key file'
   sslClientPassphrase:
     description: 'Secret client key passphrase'
+outputs:
+  resultFile: 
+    description: 'Newman result file'
 runs:
   using: 'node12'
   main: 'index.js'
