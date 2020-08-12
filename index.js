@@ -1,7 +1,6 @@
 const core = require('@actions/core')
 const newman = require('newman')
 const fs = require('fs');
-const jq = require('node-jq')
 
 try {
   const get = core.getInput
