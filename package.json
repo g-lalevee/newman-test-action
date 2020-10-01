@@ -19,7 +19,7 @@
   "author": "C. Lalevée",
   "license": "Apache-2.0",
   "dependencies": {
-    "@actions/core": "^1.2.4",
+    "@actions/core": "^1.2.6",
     "fs": "0.0.1-security",
     "newman": "^5.1.2"
   },
